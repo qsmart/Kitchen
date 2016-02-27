@@ -22,3 +22,23 @@ angular.module('starter', ['ionic'])
     }
   });
 })
+.config(function ($stateProvider, $urlRouterProvider) {
+  $stateProvider
+    .state('home', {
+      url: "/home",
+      cache: false,
+      templateUrl: "templates/home.html"
+    })
+    .state('signup', {
+      url: "/signup",
+      cache: false,
+      templateUrl: "templates/signup.html"
+    })
+  .state('login', {
+    url: "/login",
+    cache: false,
+    templateUrl: "templates/login.html"
+  });
+  // if none of the above states are matched, use this as the fallback
+  $urlRouterProvider.otherwise('/home');
+})
