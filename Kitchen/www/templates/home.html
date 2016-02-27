@@ -1,4 +1,23 @@
 <ion-view hide-nav-bar="true">
-	<p> Home Sweet Home </p>
-	<a class="button" ui-sref = "signup">Sign up</a>
+  <ion-content class="padding">
+    <div class="row">
+      <div class="col">
+        <div class="item item-body item-borderless">
+          <p class="text-center company-name">Kitchen</p>
+          <img id="landing-icon" src = "img/Food_icon.png" class="full-image">
+          <p class="text-center tag-line">Simply Home Made Food</p>
+        </div>
+        <a 
+          class="button button-block button-calm padding"
+          ui-sref = "signup">
+          <i class="icon ion-fork"></i>&nbsp<i class="icon ion-knife"></i>&nbsp&nbsp Sign-up
+        </a>
+        <p class="text-center padding-top">
+          Already have an account?
+          <a ui-sref="login" >Login
+          </a>
+        </p>
+      </div>
+    </div>
+  </ion-content>
 </ion-view>
