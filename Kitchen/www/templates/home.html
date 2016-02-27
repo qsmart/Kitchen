@@ -1,23 +1,22 @@
 <ion-view hide-nav-bar="true">
-  <ion-content class="padding">
-    <div class="row">
-      <div class="col">
-        <div class="item item-body item-borderless">
-          <p class="text-center company-name">Kitchen</p>
-          <img id="landing-icon" src = "img/Food_icon.png" class="full-image">
+  <ion-content scroll="false">
+  	<section class="first-page padding">
+  		<div class="col name-tagline-container">
+  		<div class="name-tagline">
+          <p class="text-center company-name">Kitchen <img id="landing-icon" src = "img/Food_icon.png" class="full-image"></p> 
           <p class="text-center tag-line">Simply Home Made Food</p>
+          </div>
         </div>
         <a 
-          class="button button-block button-calm padding"
+          class="button button-block button-calm"
           ui-sref = "signup">
           <i class="icon ion-fork"></i>&nbsp<i class="icon ion-knife"></i>&nbsp&nbsp Sign-up
         </a>
-        <p class="text-center padding-top">
+        <p class="login-text-home text-center padding-top">
           Already have an account?
           <a ui-sref="login" >Login
           </a>
         </p>
-      </div>
-    </div>
+  	</section>
   </ion-content>
 </ion-view>

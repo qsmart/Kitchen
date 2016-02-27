@@ -1,15 +1,9 @@
 /* Empty. Add your own CSS if you like */
 #landing-icon {
-	width: 50%;
-	height: 50%;
+	width: 30%;
     margin-left: auto;
     margin-right: auto;
     display: block;
-}
-.company-name {
-	font-size: 1.5em !important;
-}
-.tag-line {
 }
 .google {
 	background-color: #DB4437 !important;
@@ -26,4 +20,46 @@
 }
 .facebook:active {
     background-color: #4E69A2 !important;
+}
+.first-page{
+	position: relative;
+	height: 100%;
+	display: -webkit-flex;
+    -webkit-flex-direction: column;
+	background: -webkit-linear-gradient(0deg, rgba(0,0,0,1) 20%, rgba(0,0,0,0)), url("../img/food3.jpg"); /* For Safari 5.1 to 6.0 */
+	background: linear-gradient(0deg, rgba(0,0,0,1) 20%, rgba(0,0,0,0)), url("../img/food3.jpg"); /* Standard syntax */
+	background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+.name-tagline-container{
+	-webkit-flex: 4;
+    position: relative;
+    text-align: center;
+}
+.name-tagline {
+	position: absolute;
+	bottom:0;
+	width: 100%;
+}
+.name-tagline .company-name {
+	font-size: 5em !important;
+	padding: w0px
+}
+.name-tagline .company-name img {
+	width: 40px;
+}
+.company-name {
+	
+}
+.tag-line {
+	font-size: 1.2em !important;
+}
+
+.first-page p {
+	color:white;
+}
+.login-text-home{
+    padding: 25px 0px;
+    font-size: 1.15em;
 }

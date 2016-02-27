@@ -43,3 +43,13 @@ angular.module('starter', ['ionic',
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/home');
 })
+
+
+$rootScope.$on('$locationChangeSuccess', function (event, newUrl, oldUrl) {
+                if(newUrl.indexOf('/home')>0){
+                    screen.lockOrientation('portrait');
+                }
+                if(oldUrl.indexOf('/home')>0){
+                    screen.unlockOrientation();
+                }
+            });
