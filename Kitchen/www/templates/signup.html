@@ -1,4 +1,107 @@
-<ion-view hide-nav-bar="true">
-	<p> sign up </p>
-	<a class="button" ui-sref = "home">Home</a>
-</ion-view>
+<ion-view view-title="Signup"
+          hide-back-button="true" >
+  <ion-content padding="true">
+    <!-- Social networks login -->
+      <div>
+        <p class="text-center">Using:</p>
+        <div class="row"> 
+        <div class="col col-50 text-center">
+          <button class="button button-positive facebook" ng-click="facebookSignup()">
+              <i class="icon ion-social-facebook"></i>&nbsp Facebook
+          </button> 
+        </div>
+        <div class="col col-50 text-center">
+          <button class="button button-positive google">
+              <i class="icon ion-social-google"></i>&nbsp Google
+          </button>
+        </div>     
+      </div>
+      <p class="text-center">Or</p>
+      <div>
+    <!-- Form with floating labels -->
+    <form name="signupForm"
+          novalidate="novalidate"
+          ng-submit="signup(signupForm)" >
+      <ion-list >
+
+        <label class="item item-input item-floating-label"
+               ng-class="{'has-error':signupForm.firstname.$invalid}" >
+          <span class="input-label" >First Name</span >
+          <input type="text"
+                 placeholder="First Name"
+                 name="firstname"
+                 ng-model="formData.firstName"
+                 ng-required="true" 
+                 focus>
+        </label >
+        <div class="form-errors"
+             ng-messages="signupForm.firstname.$error"
+             ng-messages-include="templates/form-errors.html" >
+        </div >
+        <label class="item item-input item-floating-label"
+               ng-class="{'has-error':signupForm.lastname.$invalid}" >
+          <span class="input-label" >Last Name</span >
+          <input type="text"
+                 placeholder="Last Name"
+                 name="lastname"
+                 ng-model="formData.lastName"
+                 ng-required="true"
+                 focus>
+        </label >
+        <div class="form-errors"
+             ng-messages="signupForm.lastname.$error"
+             ng-messages-include="templates/form-errors.html" >
+        </div >
+
+
+        <label class="item item-input item-floating-label"
+               ng-class="{'has-error':signupForm.email.$invalid}" >
+          <span class="input-label" >Email</span >
+          <input type="email"
+                 placeholder="Email"
+                 name="email"
+                 ng-model="formData.email"
+                 ng-required="true"
+                 focus>
+        </label >
+        <div class="form-errors"
+             ng-messages="signupForm.email.$error"
+             ng-messages-include="templates/form-errors.html" >
+        </div >
+
+
+        <label class="item item-input item-floating-label"
+               ng-class="{'has-error':signupForm.password.$invalid}" >
+          <span class="input-label" >Password</span >
+          <input type="password"
+                 placeholder="Password"
+                 name="password"
+                 ng-model="formData.password"
+                 ng-required="true"
+                 ng-minlength="6"
+                 focus>
+        </label >
+        <div class="form-errors"
+             ng-messages="signupForm.password.$error"
+             ng-messages-include="templates/form-errors.html" >
+          <div class="form-error"
+               ng-message="minlength" >Password too short
+          </div >
+        </div >
+
+
+      </ion-list >
+      <button class="button button-calm button-block"
+              type="submit" keyFocus>Sign up
+      </button >
+    </form >
+
+    <p class="text-center" >
+      Already have an account?
+      <a nav-direction="exit"
+         ui-sref="login" >Login
+      </a >
+    </p >
+
+  </ion-content >
+</ion-view >
