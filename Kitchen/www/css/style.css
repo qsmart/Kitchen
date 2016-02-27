@@ -1,1 +1,29 @@
 /* Empty. Add your own CSS if you like */
+#landing-icon {
+	width: 50%;
+	height: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+.company-name {
+	font-size: 1.5em !important;
+}
+.tag-line {
+}
+.google {
+	background-color: #DB4437 !important;
+	color: white !important;
+	width:100% !important;
+}
+.google:active {
+	background-color: #E14B59 !important;
+}
+.facebook{
+	background-color: #3B5998 !important;
+	color: white !important;
+	width:100% !important;
+}
+.facebook:active {
+    background-color: #4E69A2 !important;
+}
