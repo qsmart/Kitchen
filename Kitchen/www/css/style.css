@@ -1,9 +1,9 @@
 /* Empty. Add your own CSS if you like */
 #landing-icon {
 	width: 30%;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
 }
 .google {
 	background-color: #DB4437 !important;
@@ -19,23 +19,23 @@
 	width:100% !important;
 }
 .facebook:active {
-    background-color: #4E69A2 !important;
+		background-color: #4E69A2 !important;
 }
 .first-page{
 	position: relative;
 	height: 100%;
 	display: -webkit-flex;
-    -webkit-flex-direction: column;
+	-webkit-flex-direction: column;
 	background: -webkit-linear-gradient(0deg, rgba(0,0,0,1) 20%, rgba(0,0,0,0)), url("../img/food3.jpg"); /* For Safari 5.1 to 6.0 */
 	background: linear-gradient(0deg, rgba(0,0,0,1) 20%, rgba(0,0,0,0)), url("../img/food3.jpg"); /* Standard syntax */
 	background-size: cover;
-    background-repeat: no-repeat;
-    background-position: 50% 50%;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
 }
 .name-tagline-container{
 	-webkit-flex: 4;
-    position: relative;
-    text-align: center;
+	position: relative;
+	text-align: center;
 }
 .name-tagline {
 	position: absolute;
@@ -60,8 +60,8 @@
 	color:white;
 }
 .login-text-home{
-    padding: 25px 0px;
-    font-size: 1.15em;
+	padding: 25px 0px;
+	font-size: 1.15em;
 }
 
 .load-container{
@@ -78,60 +78,60 @@
 .loader,
 .loader:before,
 .loader:after {
-  background: #ffffff;
-  -webkit-animation: load1 1s infinite ease-in-out;
-  animation: load1 1s infinite ease-in-out;
-  width: 1em;
-  height: 4em;
+	background: #ffffff;
+	-webkit-animation: load1 1s infinite ease-in-out;
+	animation: load1 1s infinite ease-in-out;
+	width: 1em;
+	height: 4em;
 }
 .loader:before,
 .loader:after {
-  position: absolute;
-  top: 0;
-  content: '';
+	position: absolute;
+	top: 0;
+	content: '';
 }
 .loader:before {
-  left: -1.5em;
-  -webkit-animation-delay: -0.32s;
-  animation-delay: -0.32s;
+	left: -1.5em;
+	-webkit-animation-delay: -0.32s;
+	animation-delay: -0.32s;
 }
 .loader {
-  text-indent: -9999em;
-  margin: 88px auto;
-  position: relative;
-  font-size: 11px;
-  -webkit-transform: translateZ(0);
-  -ms-transform: translateZ(0);
-  transform: translateZ(0);
-  -webkit-animation-delay: -0.16s;
-  animation-delay: -0.16s;
+	text-indent: -9999em;
+	margin: 88px auto;
+	position: relative;
+	font-size: 11px;
+	-webkit-transform: translateZ(0);
+	-ms-transform: translateZ(0);
+	transform: translateZ(0);
+	-webkit-animation-delay: -0.16s;
+	animation-delay: -0.16s;
 }
 .loader:after {
-  left: 1.5em;
+	left: 1.5em;
 }
 @-webkit-keyframes load1 {
-  0%,
-  80%,
-  100% {
-    box-shadow: 0 0 #ffffff;
-    height: 4em;
-  }
-  40% {
-    box-shadow: 0 -2em #ffffff;
-    height: 5em;
-  }
+	0%,
+	80%,
+	100% {
+		box-shadow: 0 0 #ffffff;
+		height: 4em;
+	}
+	40% {
+		box-shadow: 0 -2em #ffffff;
+		height: 5em;
+	}
 }
 @keyframes load1 {
-  0%,
-  80%,
-  100% {
-    box-shadow: 0 0 #ffffff;
-    height: 4em;
-  }
-  40% {
-    box-shadow: 0 -2em #ffffff;
-    height: 5em;
-  }
+	0%,
+	80%,
+	100% {
+		box-shadow: 0 0 #ffffff;
+		height: 4em;
+	}
+	40% {
+		box-shadow: 0 -2em #ffffff;
+		height: 5em;
+	}
 }
 
 /* spinner ends */ 
