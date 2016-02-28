@@ -4,7 +4,9 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 angular.module('starter', ['ionic',
-                          'kitchen.controllers.authentication'])
+                          'kitchen.controllers.authentication',
+                          'firebase',
+                          'ngCordova'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -33,23 +35,25 @@ angular.module('starter', ['ionic',
     .state('signup', {
       url: "/signup",
       cache: false,
+      controller: 'SignupCtrl',
       templateUrl: "templates/signup.html"
     })
   .state('login', {
     url: "/login",
+    controller: 'LoginCtrl',
     cache: false,
     templateUrl: "templates/login.html"
-  });
+  })
+  .state('loading', {
+    url: "/loading",
+    cache: false,
+    templateUrl: "templates/loading.html"
+  })
+  .state('welcome', {
+    url: "/welcome",
+    cache: false,
+    templateUrl: "templates/welcomeTemp.html"
+  })
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/home');
 })
-
-
-$rootScope.$on('$locationChangeSuccess', function (event, newUrl, oldUrl) {
-                if(newUrl.indexOf('/home')>0){
-                    screen.lockOrientation('portrait');
-                }
-                if(oldUrl.indexOf('/home')>0){
-                    screen.unlockOrientation();
-                }
-            });
