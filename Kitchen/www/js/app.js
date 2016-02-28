@@ -5,6 +5,8 @@
 // the 2nd parameter is an array of 'requires'
 angular.module('starter', ['ionic',
   'kitchen.controllers.authentication',
+  'kitchen.controllers.home',
+  'kitchen.services.authentication',
   'firebase',
   'ngCordova'
 ])
@@ -37,13 +39,21 @@ angular.module('starter', ['ionic',
         url: "/signup",
         cache: false,
         controller: 'SignupCtrl',
-        templateUrl: "templates/signup.html"
+        templateUrl: "templates/signup.html",
+        params: {
+          'hasServerError': false,
+          'error': ''
+        }
       })
       .state('login', {
         url: "/login",
         controller: 'LoginCtrl',
         cache: false,
-        templateUrl: "templates/login.html"
+        templateUrl: "templates/login.html",
+        params: {
+          'hasServerError': false,
+          'error': ''
+        }
       })
       .state('loading', {
         url: "/loading",
@@ -52,6 +62,7 @@ angular.module('starter', ['ionic',
       })
       .state('welcome', {
         url: "/welcome",
+        controller: 'HomeCtrl',
         cache: false,
         templateUrl: "templates/welcomeTemp.html"
       })

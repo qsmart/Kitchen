@@ -6,6 +6,7 @@
 		<form ng-submit="login(loginForm)"
 			novalidate="novalidate"
 			name="loginForm">
+			<div ng-if="hasServerError" class="text-center assertive padding">{{error}}</div>
 			<ion-list >
 				<label class="item item-input item-floating-label"
 				ng-class = "{'has-error':loginForm.email.$invalid}">
@@ -38,7 +39,7 @@
 			<button class="button button-positive button-block"
 							type="submit" >Login</button >
 		</form >
-		<p class="text-center" >
+		<p class="text-center padding-top" >
 			Don't have an account?
 			<a nav-direction="enter"
 				 ui-sref="signup" >Sign Up</a >
