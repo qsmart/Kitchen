@@ -22,6 +22,7 @@
 				<form name="signupForm"
 					novalidate="novalidate"
 					ng-submit="signup(signupForm)" >
+					<div ng-if="hasServerError" class="text-center assertive padding">{{error}}</div>
 					<ion-list >
 
 						<label class="item item-input item-floating-label"
@@ -84,11 +85,12 @@
 							type="submit" keyFocus>Sign up</button >
 				</form >
 
-				<p class="text-center" >
+				<p class="text-center padding-top" >
 					Already have an account?
 					<a nav-direction="exit"
 				 ui-sref="login" >Login</a >
 				</p >
-
-			</ion-content >
-		</ion-view >
+			</div>
+		</div>
+	</ion-content >
+</ion-view >
