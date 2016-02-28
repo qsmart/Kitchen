@@ -19,8 +19,7 @@ app.controller('LoginCtrl', function ($scope, $state, $window) {
 				if (error) {
 				    console.log("Login Failed!", error);
 				} else {
-					$state.go('welcome',{}, {reload: true});
-					$window.location.reload(true);
+					$state.go('welcome');
 				    console.log("Authenticated successfully with payload:", authData);
 				}
 	  		});
