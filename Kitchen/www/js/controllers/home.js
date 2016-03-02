@@ -5,5 +5,5 @@ var app = angular.module('kitchen.controllers.home', []);
  *********************************************************************/
 app.controller('HomeCtrl', function($scope, $state, authentication) {
   $scope.getError = authentication.getError;
-  $scope.email = authentication.getCredential().password.email;
+  //$scope.email = authentication.getCredential().password.email;
 });

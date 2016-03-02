@@ -57,7 +57,7 @@ app.factory('authentication', function($state) {
 						console.log("Error creating user:", error);
 					} else {
 						authnticated = true;
-						credential = authData;
+						credential = userData;
 						$state.go('welcome');
 						console.log("Successfully created user account with uid:", userData.uid);
 					}
