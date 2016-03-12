@@ -23,7 +23,7 @@ app.factory('authentication', function($state) {
 					} else {
 						authnticated = true;
 						credential = authData;
-						$state.go('welcome');
+						$state.go('cookHome');
 						console.log("Authenticated successfully with payload:", authData);
 					}
 				});
@@ -58,7 +58,7 @@ app.factory('authentication', function($state) {
 					} else {
 						authnticated = true;
 						credential = userData;
-						$state.go('welcome');
+						$state.go('cookHome');
 						console.log("Successfully created user account with uid:", userData.uid);
 					}
 				});

@@ -1,0 +1,23 @@
+<ion-modal-view>
+        <ion-header-bar class="bar bar-header bar-positive">
+          <h1 class="title">New dish</h1>
+          <button class="button button-clear button-primary" ng-click="modal.hide()">Cancel</button>
+        </ion-header-bar>
+        <ion-content class="padding">
+          <div class="list">
+            <label class="item item-input">
+              <span class="input-label">Name</span>
+              <input ng-model="modal.newDishName"  type="text" required>
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Price</span>
+              <input ng-model="modal.newDishPrice"  type="text" required>
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Description</span>
+              <input ng-model="modal.newDishDescription" type="text" required>
+            </label>
+            <button class="button button-full button-positive" ng-click="addNewDish()">Add dish</button>
+          </div>
+        </ion-content>
+      </ion-modal-view>
