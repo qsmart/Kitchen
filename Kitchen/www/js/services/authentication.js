@@ -1,5 +1,5 @@
 var app = angular.module('kitchen.services.authentication', ['ngMessages']);
-app.factory('authentication', function($state) {
+app.factory('authentication', ['$state', '$q', function($state, $q) {
 	var authnticated = false;
 	var credential = null;
 	var authError = null;
@@ -20,24 +20,28 @@ app.factory('authentication', function($state) {
 	loginWithEmail = function(email, password) {
 		$state.go('loading');
 		var ref = new Firebase("https://kitchenapp.firebaseio.com");
-		ref.authWithPassword({
-			email: email,
-			password: password
-		}, function(error, authData) {
-			authError = error;
-			if (error) {
-				authnticated = false;
-				$state.go('login', {
-					'hasServerError': true,
-					'error': error.toString().replace('Error: ', '')
-				});
-				console.log("Login Failed!", error);
-			} else {
-				authnticated = true;
-				credential = authData;
-				$state.go('welcome');
-				console.log("Authenticated successfully with payload:", authData);
-			}
+		return $q(function(resolve, reject) {
+			ref.authWithPassword({
+				email: email,
+				password: password
+			}, function(error, authData) {
+				authError = error;
+				if (error) {
+					authnticated = false;
+					$state.go('login', {
+						'hasServerError': true,
+						'error': error.toString().replace('Error: ', '')
+					});
+					console.log("Login Failed!", error);
+					reject(null);
+				} else {
+					authnticated = true;
+					credential = authData;
+					$state.go('welcome');
+					console.log("Authenticated successfully with payload:", authData);
+					resolve(ref.getAuth());
+				}
+			})
 		});
 	};
 	signup = function(form) {
@@ -47,7 +51,7 @@ app.factory('authentication', function($state) {
 			var firstName = form.firstname.$modelValue;
 			var lastName = form.lastname.$modelValue;
 			var email = form.email.$modelValue;
-			var password = form.password.$modelValue; 
+			var password = form.password.$modelValue;
 			ref.createUser({
 				email: email,
 				password: password
@@ -63,13 +67,28 @@ app.factory('authentication', function($state) {
 				} else {
 					authnticated = true;
 					credential = userData;
-					/*ref.child('cooks/' + username).set({
-						firstName: firstName,
-						lastName: lastName,
-						email: email,
-					});*/
 					console.log("Successfully created user account with uid:", userData.uid);
-					loginWithEmail(email, password);
+					var promise = loginWithEmail(email, password);
+					promise.then(function(auth) {
+						ref.child('cooks/' + 'dasda').set({
+								firstName: firstName,
+								lastName: lastName,
+								email: email,
+							},
+							function(error) {
+								if (error) {
+									console.log(error.toString());
+									$state.go('signup', {
+										'hasServerError': true,
+										'error': error.toString().replace('Error: ', '')
+									});
+								} else {
+									console.log('success');
+								}
+							})
+					}, function(auth) {
+						console.log("login after signup failed");
+					});
 				}
 			});
 			//console.log(signupForm);
@@ -81,26 +100,33 @@ app.factory('authentication', function($state) {
 			//TODO
 		}
 	};
+	var facebookSignup = function() {
+
+	};
+	var googleSignup = function() {
+
+	};
+	var isAuthenticated = function() {
+		return authnticated;
+	};
+	var getCredential = function() {
+		if (authnticated) {
+			return credential;
+		} else {
+			return null;
+		}
+	};
+	var getError = function() {
+		return authError;
+	};
 	return {
 		login: login,
 		loginWithEmail: loginWithEmail,
 		signup: signup,
-		facebookSignup: function() {
-
-		},
-		isAuthenticated: function() {
-			return authnticated;
-		},
-		getCredential: function() {
-			if (authnticated) {
-				return credential;
-			} else {
-				return null;
-			}
-		},
-		getError: function() {
-			return authError;
-		}
-
+		facebookSignup: facebookSignup,
+		googleSignup: googleSignup,
+		isAuthenticated: isAuthenticated,
+		getCredential: getCredential,
+		getError: getError
 	}
-})
+}])
