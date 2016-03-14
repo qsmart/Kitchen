@@ -7,7 +7,15 @@ app.factory('authentication', ['$state', '$q', function($state, $q) {
 		if (form.$valid) {
 			var email = form.email.$modelValue;
 			var password = form.password.$modelValue;
-			loginWithEmail(email, password);
+			var promise = loginWithEmail(email, password);
+			promise.then(function(auth) {
+				$state.go('login', {
+					'hasServerError': true,
+					'error': error.toString().replace('Error: ', '')
+				});
+			}, function(error) {
+				$state.go('welcome');
+			});
 			//TODO
 		} else {
 			authError = "invalid"
@@ -28,16 +36,11 @@ app.factory('authentication', ['$state', '$q', function($state, $q) {
 				authError = error;
 				if (error) {
 					authnticated = false;
-					$state.go('login', {
-						'hasServerError': true,
-						'error': error.toString().replace('Error: ', '')
-					});
 					console.log("Login Failed!", error);
 					reject(null);
 				} else {
 					authnticated = true;
 					credential = authData;
-					$state.go('welcome');
 					console.log("Authenticated successfully with payload:", authData);
 					resolve(ref.getAuth());
 				}
@@ -70,7 +73,7 @@ app.factory('authentication', ['$state', '$q', function($state, $q) {
 					console.log("Successfully created user account with uid:", userData.uid);
 					var promise = loginWithEmail(email, password);
 					promise.then(function(auth) {
-						ref.child('cooks/' + 'dasda').set({
+						ref.child('cooks/' + auth.uid).set({
 								firstName: firstName,
 								lastName: lastName,
 								email: email,
@@ -78,11 +81,31 @@ app.factory('authentication', ['$state', '$q', function($state, $q) {
 							function(error) {
 								if (error) {
 									console.log(error.toString());
+									ref.removeUser({
+										email: email,
+										password: password
+									}, function(error) {
+										if (error) {
+											switch (error.code) {
+												case "INVALID_USER":
+													console.log("The specified user account does not exist.");
+													break;
+												case "INVALID_PASSWORD":
+													console.log("The specified user account password is incorrect.");
+													break;
+												default:
+													console.log("Error removing user:", error);
+											}
+										} else {
+											console.log("User account deleted successfully!");
+										}
+									});
 									$state.go('signup', {
 										'hasServerError': true,
 										'error': error.toString().replace('Error: ', '')
 									});
 								} else {
+									$state.go('welcome');
 									console.log('success');
 								}
 							})
