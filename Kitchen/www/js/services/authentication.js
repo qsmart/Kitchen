@@ -9,12 +9,12 @@ app.factory('authentication', ['$state', '$q', function($state, $q) {
 			var password = form.password.$modelValue;
 			var promise = loginWithEmail(email, password);
 			promise.then(function(auth) {
+				$state.go('welcome');
+			}, function(error) {
 				$state.go('login', {
 					'hasServerError': true,
 					'error': error.toString().replace('Error: ', '')
 				});
-			}, function(error) {
-				$state.go('welcome');
 			});
 			//TODO
 		} else {

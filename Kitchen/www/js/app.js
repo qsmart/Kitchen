@@ -31,7 +31,8 @@ angular.module('starter', ['ionic',
       }
     });
   })
-  .config(function($stateProvider, $urlRouterProvider) {
+  .config(function($stateProvider, $urlRouterProvider, $compileProvider) {
+    $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|tel):/);
     $stateProvider
       .state('home', {
         url: "/home",
