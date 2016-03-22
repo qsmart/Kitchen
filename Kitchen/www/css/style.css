@@ -137,15 +137,20 @@
 /* spinner ends */ 
 
 .add-dish {
-	height: 50px !important;
 }
 
-.add-dish span{
-	padding: 3px;
-	width: 100%;
+.add-dish button {
+	margin: 0 !important;
+	font-weight: bold !important;
 }
-.add-dish span input {
-	width: 100%;
-	margin:  0 5px;
-	padding: 0 5px;
+.take-add-picture {
+	text-align: center;
+	margin: 10px 0;
+}
+.take-add-picture button {
+	margin: 0 10px;
+}
+
+.modal-dish-image {
+	width:60%;
 }
