@@ -174,7 +174,9 @@
 	position: relative;
 	background: linear-gradient(0deg, rgba(0,0,0,1), rgba(0,0,0,0.5) 25%, rgba(0,0,0,0.5) 5%, rgba(0,0,0,0) 35%)
 }
-
+.dish-item img {
+	width:100%;
+}
 .dish-price {
 	position: absolute;
     right: 10px;
