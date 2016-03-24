@@ -6,7 +6,10 @@
 angular.module('starter', ['ionic',
   'kitchen.controllers.authentication',
   'kitchen.controllers.home',
+  'kitchen.controller.cook-home',
+  'kitchen.controller.cook-dishes',
   'kitchen.services.authentication',
+  'kitchen.services.cook',
   'firebase',
   'ngCordova'
 ])
@@ -29,16 +32,14 @@ angular.module('starter', ['ionic',
     });
   })
   .config(function($stateProvider, $urlRouterProvider, $compileProvider) {
-    $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|tel):/);
+    $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|tel|data):/);
     $stateProvider
       .state('home', {
         url: "/home",
-        cache: false,
         templateUrl: "templates/home.html"
       })
       .state('signup', {
         url: "/signup",
-        cache: false,
         controller: 'SignupCtrl',
         templateUrl: "templates/signup.html",
         params: {
@@ -49,7 +50,6 @@ angular.module('starter', ['ionic',
       .state('login', {
         url: "/login",
         controller: 'LoginCtrl',
-        cache: false,
         templateUrl: "templates/login.html",
         params: {
           'hasServerError': false,
@@ -58,14 +58,49 @@ angular.module('starter', ['ionic',
       })
       .state('loading', {
         url: "/loading",
-        cache: false,
         templateUrl: "templates/loading.html"
       })
-      .state('welcome', {
-        url: "/welcome",
-        controller: 'HomeCtrl',
-        cache: false,
-        templateUrl: "templates/welcomeTemp.html"
+      .state('cookHome', {
+        url: "/cookHome",
+        controller: 'cookHomeCtrl',
+        abstract: false,
+        templateUrl: "templates/cook-home.html"
+      })
+      .state('cookHome.orders', {
+        url: "/orders",
+        views:{
+          'cook-orders':{
+            controller: 'cookHomeCtrl',
+            templateUrl: "templates/cook-orders.html"  
+          }
+        }
+      })
+        .state('cookHome.dishes', {
+        url: "/dishes",
+        views:{
+          'cook-dishes':{
+            controller: 'cookDishesCtrl',
+            templateUrl: "templates/cook-dishes.html"  
+          }
+        }
+        })
+        .state('cookHome.payments', {
+        url: "/payments",
+        views:{
+          'cook-payments':{
+            controller: 'cookHomeCtrl',
+            templateUrl: "templates/cook-payments.html"  
+          }
+        }
+        })
+        .state('cookHome.settings', {
+        url: "/settings",
+        views:{
+          'cook-settings':{
+            controller: 'cookHomeCtrl',
+            templateUrl: "templates/cook-settings.html"  
+          }
+        }
       })
       // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/home');

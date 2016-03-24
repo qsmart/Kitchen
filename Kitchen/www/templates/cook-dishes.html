@@ -1,0 +1,22 @@
+<ion-view title="Dishes">
+	<ion-content class="has-header">
+		<ion-list class='dish-list'>
+			<ion-item ng-repeat="dish in cookDishes">
+				<div class="dish-item">
+				<div class="dish-info">
+					<div class="dish-name">{{dish.name}}</div>
+					<div class="dish-price"><div>{{dish.price | currency}}</div></div>
+					<div class="dish-discription">{{dish.description}}</div>
+				</div>
+				<img src={{dish.image}}>
+			
+				</div>
+				<ion-option-button class="button-positive dish-option">Edit</ion-option-button>
+    			<ion-option-button class="button-assertive dish-option">Delete</ion-option-button>
+			</ion-item>
+		</ion-list>
+	</ion-content>
+	<ion-footer-bar class="bar  bar-stable add-dish">
+	    <button class="button button-block ion-plus" ng-click="modal.show()">&nbsp Add</button>
+	</ion-footer-bar>
+</ion-view>

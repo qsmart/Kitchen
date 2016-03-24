@@ -9,7 +9,7 @@ app.factory('authentication', ['$state', '$q', function($state, $q) {
 			var password = form.password.$modelValue;
 			var promise = loginWithEmail(email, password);
 			promise.then(function(auth) {
-				$state.go('welcome');
+				$state.go('cookHome');
 			}, function(error) {
 				$state.go('login', {
 					'hasServerError': true,
@@ -105,7 +105,7 @@ app.factory('authentication', ['$state', '$q', function($state, $q) {
 										'error': error.toString().replace('Error: ', '')
 									});
 								} else {
-									$state.go('welcome');
+									$state.go('cookHome');
 									console.log('success');
 								}
 							})
@@ -124,7 +124,6 @@ app.factory('authentication', ['$state', '$q', function($state, $q) {
 		}
 	};
 	var facebookSignup = function() {
-
 	};
 	var googleSignup = function() {
 

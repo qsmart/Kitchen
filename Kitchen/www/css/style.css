@@ -135,3 +135,108 @@
 }
 
 /* spinner ends */ 
+
+.add-dish {
+}
+
+.add-dish button {
+	margin: 0 !important;
+	font-weight: bold !important;
+}
+.take-add-picture {
+	text-align: center;
+	margin: 10px 0;
+}
+.take-add-picture button {
+	margin: 0 10px;
+}
+
+.modal-dish-image {
+	width:60%;
+}
+.modal-dish-image{
+	border-radius: 10px;
+}
+.dish-info {
+	position: absolute; 
+	bottom: 0;
+	color: white;
+	padding: 10px;
+	width: 100%;
+	padding-top: 220px;
+	height: 300px;
+	background: linear-gradient(0deg, rgba(0,0,0,1), rgba(0,0,0,0.5) 28%, rgba(0,0,0,0.5) 5%, rgba(0,0,0,0) 35%)
+
+}
+.dish-item {
+	font-family: 'Open Sans', sans-serif;
+	height: 300px;
+	position: relative;
+	background: linear-gradient(0deg, rgba(0,0,0,1), rgba(0,0,0,0.5) 25%, rgba(0,0,0,0.5) 5%, rgba(0,0,0,0) 35%)
+}
+
+.dish-price {
+	position: absolute;
+    right: 10px;
+    bottom: 10px;
+	display: inline-block;
+  	width: auto;
+	height: 30px;
+	
+	background-color: green;
+	box-shadow: 
+	-webkit-border-radius: 3px 4px 4px 3px;
+	-moz-border-radius: 3px 4px 4px 3px;
+	border-radius: 3px 4px 4px 3px;
+	border-left: 1px solid green;
+
+	/* This makes room for the triangle */
+	margin-left: 19px;
+	
+	color: white;
+	font-weight: 200;
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size: 18px;
+	line-height: 30px;
+
+	padding: 0 10px 0 10px;
+}
+
+/* Makes the triangle */
+.dish-price:before {
+	content: "";
+	position: absolute;
+	display: block;
+	left: -19px;
+	width: 0;
+	height: 0;
+	border-top: 15px solid transparent;
+	border-bottom: 15px solid transparent;
+	border-right: 19px solid green;
+}
+
+/* Makes the circle */
+.dish-price:after {
+	content: "";
+	background-color: white;
+	border-radius: 50%;
+	width: 4px;
+	height: 5px;
+	display: block;
+	position: absolute;
+	left: -9px;
+	top: 13px;
+}
+
+.dish-name {
+	font-size: 22px;
+	margin-bottom: 10px;
+}
+.dish-discription {
+	font-size: 16px;
+}
+
+.dish-list .item-content {
+    padding: 0px !important;
+}
+

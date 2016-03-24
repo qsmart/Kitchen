@@ -1,0 +1,66 @@
+<ion-modal-view>
+        <ion-header-bar class="bar bar-header bar-positive">
+          <h1 class="title">New Dish</h1>
+          <button class="button button-clear button-primary" ng-click="modal.hide()">Cancel</button>
+        </ion-header-bar>
+        <ion-content class="padding">
+          <form name="addDishForm"
+          novalidate="novalidate"
+          ng-submit="addDish(addDishForm)" >
+            <div ng-if="hasServerError" class="text-center assertive padding">{{error}}</div>
+            <div class="list">
+              <label class="item item-input item-floating-label"
+               ng-class="{'has-error':addDishForm.newDishName.$invalid}" >
+              <span class="input-label" >Dish Name</span >
+              <input type="text"
+                 placeholder="Dish Name"
+                 name="newDishName"
+                 ng-model="modal.newDishName"
+                 ng-required="true" 
+                 focus></label >
+              <div class="form-errors"
+               ng-messages="addDishForm.newDishName.$error"
+               ng-messages-include="templates/form-errors.html" ></div >
+
+
+              <label class="item item-input item-floating-label"
+               ng-class="{'has-error':addDishForm.newDishPrice.$invalid}" >
+              <span class="input-label" >Price</span >
+              <input type="text"
+                 placeholder="Price"
+                 name="newDishPrice"
+                 ng-model="modal.newDishPrice"
+                 ng-required="true"
+                 focus></label >
+              <div class="form-errors"
+               ng-messages="addDishForm.newDishPrice.$error"
+               ng-messages-include="templates/form-errors.html" ></div >
+
+               <label class="item item-input item-floating-label"
+               ng-class="{'has-error':addDishForm.newDishDescription.$invalid}" >
+              <span class="input-label" >Description</span >
+              <textarea
+                 rows="6"
+                 placeholder="Description"
+                 name="newDishDescription"
+                 ng-model="modal.newDishDescription"
+                 ng-required="true"
+                 focus>
+                 </textarea>
+                 </label >
+              <div class="form-errors"
+               ng-messages="addDishForm.newDishDescription.$error"
+               ng-messages-include="templates/form-errors.html" ></div >
+              
+              <div class="take-add-picture">
+                <button type='button' class="button button-icon icon ion-camera" ng-click="takePicture()"></button>
+                <button type='button' class="button button-icon icon ion-image" ng-click="selectPicFromGallery()"></button>
+                <div>
+                  <img class="full-image modal-dish-image" src={{dishImage}}>
+                </div>
+              </div>
+              <button class="button button-full button-positive" type="submit" ng-click="addNewDish()">Add dish</button>
+            </div>
+          </form>
+        </ion-content>
+      </ion-modal-view>
