@@ -9,7 +9,7 @@
  		});
 
 		var auth = authentication.getCredential();
-		var ref = new Firebase("https://kitchenapp.firebaseio.com/dishes/6644096d-8e98-45f0-9398-2be899b47528");//+auth.uid);
+		var ref = new Firebase("https://kitchenapp.firebaseio.com/dishes/"+auth.uid);
 		$scope.cookDishes = [];
 		ref.on("child_removed", function(snapshot) {
 			var index = $scope.cookDishes.indexOf(snapshot.val());
