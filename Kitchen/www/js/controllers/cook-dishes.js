@@ -8,11 +8,12 @@
  		$cordovaImagePicker,
  		$ionicPlatform,
  		$cordovaCamera,
- 		$ionicLoading) {
- 		
+ 		$ionicLoading,
+ 		$ionicPopup) {
+
  		$ionicLoading.show({
-      template: 'Loading dishes...'
-    });
+ 			template: 'Loading dishes...'
+ 		});
 
  		$ionicModal.fromTemplateUrl('templates/add-dish.html', {
  			scope: $scope,
@@ -84,10 +85,24 @@
  					height: 700,
  					quality: 70
  				};
-
  				$cordovaImagePicker.getPictures(options).then(function(results) {
+ 					var alertPopup = $ionicPopup.alert({
+ 						title: 'Don\'t eat that!',
+ 						template: 'after selecting'
+ 					});
 
+ 					alertPopup.then(function(res) {
+ 						console.log('Thank you for not eating my delicious ice cream cone');
+ 					});
  					for (var i = 0; i < results.length; i++) {
+ 						var alertPopup = $ionicPopup.alert({
+ 							title: 'Don\'t eat that!',
+ 							template: 'after for loop'
+ 						});
+
+ 						alertPopup.then(function(res) {
+ 							console.log('Thank you for not eating my delicious ice cream cone');
+ 						});
  						console.log(results[i]);
  						window.plugins.Base64.encodeFile(results[i], function(base64) { // Encode URI to Base64 needed for contacts plugin
  							$scope.dishImage = base64;
@@ -95,6 +110,14 @@
  						});
  					}
  				}, function(error) {
+ 					var alertPopup = $ionicPopup.alert({
+ 						title: 'Don\'t eat that!',
+ 						template: 'error'
+ 					});
+
+ 					alertPopup.then(function(res) {
+ 						console.log('Thank you for not eating my delicious ice cream cone');
+ 					});
  					console.log('Error: ' + JSON.stringify(error)); // In case of error
  				});
  			};
