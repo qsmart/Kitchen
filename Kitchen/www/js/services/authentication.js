@@ -1,5 +1,5 @@
 var app = angular.module('kitchen.services.authentication', ['ngMessages']);
-app.factory('authentication', ['$state', '$q', function($state, $q) {
+app.factory('authentication', ['$state', '$q', '$ionicPopup', function($state, $q, $ionicPopup) {
 	var authnticated = false;
 	var credential = null;
 	var authError = null;
@@ -37,7 +37,7 @@ app.factory('authentication', ['$state', '$q', function($state, $q) {
 				if (error) {
 					authnticated = false;
 					console.log("Login Failed!", error);
-					reject(null);
+					reject(error);
 				} else {
 					authnticated = true;
 					credential = authData;
@@ -123,6 +123,17 @@ app.factory('authentication', ['$state', '$q', function($state, $q) {
 			//TODO
 		}
 	};
+	resetPassword = function() {
+		// An alert dialog
+			var alertPopup = $ionicPopup.alert({
+				title: 'Reset password',
+				template: 'Sorry this feature is not available at the moment'
+			});
+
+			alertPopup.then(function(res) {
+				console.log('Thank you for not eating my delicious ice cream cone');
+			});
+	};
 	var facebookSignup = function() {
 	};
 	var googleSignup = function() {
@@ -141,6 +152,11 @@ app.factory('authentication', ['$state', '$q', function($state, $q) {
 	var getError = function() {
 		return authError;
 	};
+	var logout = function() {
+		var ref = new Firebase("https://kitchenapp.firebaseio.com");
+		ref.unauth();
+		$state.go('home');
+	};
 	return {
 		login: login,
 		loginWithEmail: loginWithEmail,
@@ -149,6 +165,8 @@ app.factory('authentication', ['$state', '$q', function($state, $q) {
 		googleSignup: googleSignup,
 		isAuthenticated: isAuthenticated,
 		getCredential: getCredential,
-		getError: getError
+		getError: getError,
+		logout: logout,
+		resetPassword:resetPassword
 	}
 }])
