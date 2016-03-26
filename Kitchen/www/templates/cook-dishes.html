@@ -8,7 +8,7 @@
 					<div class="dish-price"><div>{{dish.price | currency}}</div></div>
 					<div class="dish-discription">{{dish.description}}</div>
 				</div>
-				<img src={{dish.image}}>
+				<img ng-src={{dish.image}}>
 			
 				</div>
 				<ion-option-button class="button-positive dish-option">Edit</ion-option-button>
@@ -17,6 +17,6 @@
 		</ion-list>
 	</ion-content>
 	<ion-footer-bar class="bar  bar-stable add-dish">
-	    <button class="button button-block ion-plus" ng-click="modal.show()">&nbsp Add</button>
+	    <button class="button button-balanced button-block ion-plus" ng-click="modal.show()">&nbsp Add</button>
 	</ion-footer-bar>
 </ion-view>

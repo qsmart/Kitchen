@@ -8,6 +8,8 @@ angular.module('starter', ['ionic',
   'kitchen.controllers.home',
   'kitchen.controller.cook-home',
   'kitchen.controller.cook-dishes',
+  'kitchen.controller.cook-settings',
+  'kitchen.controller.account-settings',
   'kitchen.services.authentication',
   'kitchen.services.cook',
   'firebase',
@@ -97,7 +99,7 @@ angular.module('starter', ['ionic',
         url: "/settings",
         views:{
           'cook-settings':{
-            controller: 'cookHomeCtrl',
+            controller: 'cookSettingsCtrl',
             templateUrl: "templates/cook-settings.html"  
           }
         }

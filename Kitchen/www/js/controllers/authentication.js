@@ -7,6 +7,7 @@ app.controller('LoginCtrl', function($scope, $state, $stateParams, authenticatio
 	$scope.hasServerError = $stateParams.hasServerError;
 	$scope.error = $stateParams.error;
 	$scope.login = authentication.login;
+	$scope.resetPassword = authentication.resetPassword;
 });
 
 /*********************************************************************
